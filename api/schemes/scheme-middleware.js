@@ -7,7 +7,12 @@
   }
 */
 const checkSchemeId = (req, res, next) => {
-
+  const id = req.params.id
+  if (!id) {
+    res.status(404).json({
+      message: `scheme with scheme_id ${id} not found`
+    })
+  }
 }
 
 /*
