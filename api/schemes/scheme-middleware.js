@@ -12,6 +12,9 @@ const checkSchemeId = (req, res, next) => {
   if (!id) {
     error.message = `scheme with scheme_id ${id} not found`
     next(error)
+  } else {
+    req.id = id
+    next()
   }
 }
 
