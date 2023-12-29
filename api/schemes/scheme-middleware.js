@@ -32,7 +32,7 @@ const checkSchemeId = async (req, res, next) => {
 const validateScheme = (req, res, next) => {
   const name = req.body.scheme_name;
   const error = ({ status: 404 })
-  if(!name || typeof name !== "string" || !name.trim()) {
+  if(name === undefined || typeof name !== "string" || !name.trim()) {
     error.message = "invalid scheme_name"
     next(error)
   } else {
@@ -54,7 +54,7 @@ const validateStep = (req, res, next) => {
   const instructions = req.body.instructions;
   const stepNumber = req.body.step_number
   const error = ({ status: 400 })
-  if(!instructions || instructions.length === 0 || typeof instructions !== "string" || typeof stepNumber !== "number" || stepNumber < 1) {
+  if(instructions === undefined || instructions.trim().length === 0 || typeof instructions !== "string" || typeof stepNumber !== "number" || stepNumber < 1) {
     error.message = "invalid step"
     next(error)
   } else {
