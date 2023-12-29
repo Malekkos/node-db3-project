@@ -2,9 +2,11 @@ const db = require("../../data/db-config")
 
 function find() { // EXERCISE A
   const data = db("schemes as sc")
+  .leftJoin("steps as st", "sc.scheme_id", "st.scheme_id")
   .select("sc.*")
-  .leftJoin("steps as st")
   .count("st.step_id as number_of_steps")
+  .groupBy("sc.scheme_id")
+  return data
   
   
   /*
