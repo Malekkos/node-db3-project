@@ -6,8 +6,12 @@
     "message": "scheme with scheme_id <actual id> not found"
   }
 */
-const checkSchemeId = (req, res, next) => {
-  const id = req.params.id
+
+const db = require("../../data/db-config")
+
+
+const checkSchemeId = async (req, res, next) => {
+  const id = await db("schemes").where("scheme_id", req.params.scheme_id).first()
   const error = ({ status: 404 })
   if (!id) {
     error.message = `scheme with scheme_id ${id} not found`
