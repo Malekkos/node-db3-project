@@ -1,4 +1,12 @@
+const db = require("../../data/db-config")
+
 function find() { // EXERCISE A
+  const data = db("schemes as sc")
+  .select("sc.*")
+  .leftJoin("steps as st")
+  .count("st.step_id as number_of_steps")
+  
+  
   /*
     1A- Study the SQL query below running it in SQLite Studio against `data/schemes.db3`.
     What happens if we change from a LEFT join to an INNER join?

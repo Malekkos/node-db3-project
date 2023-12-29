@@ -32,7 +32,7 @@ const checkSchemeId = async (req, res, next) => {
 const validateScheme = (req, res, next) => {
   const name = req.body.scheme_name;
   const error = ({ status: 404 })
-  if(!name || name.length === 0 || typeof name !== "string") {
+  if(!name || typeof name !== "string" || !name.trim()) {
     error.message = "invalid scheme_name"
     next(error)
   } else {
