@@ -14,7 +14,7 @@ const checkSchemeId = async (req, res, next) => {
   const id = await db("schemes").where("scheme_id", req.params.scheme_id).first()
   const error = ({ status: 404 })
   if (!id) {
-    error.message = `scheme with scheme_id ${id} not found`
+    error.message = `scheme with scheme_id ${req.params.scheme_id} not found`
     next(error)
   } else {
     next()
