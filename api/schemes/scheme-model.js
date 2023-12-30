@@ -41,10 +41,6 @@ async function findById(scheme_id) { // EXERCISE B
   }
   
   data.forEach(row => {
-    console.log("these are the rows:  ", row)
-    console.log("these are the rows for step_id", row.step_id)
-    console.log("We have entered here")
-
     if(row.step_id === null) {
       return
     } else {
